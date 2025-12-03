@@ -1,223 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV - Oumayma Zekri</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Oumayma Zekri - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      color: #222;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --accent:#0b5cff;
+      --muted:#6b7280;
+      --soft:#eef2ff;
+      --glass: rgba(11,92,255,0.06);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
+    *{box-sizing:border-box}
+    body{margin:24px;background:var(--bg);color:#111827}
+    .cv-wrap{max-width:960px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:20px}
+    .card{background:var(--card);border-radius:12px;padding:22px;box-shadow:0 6px 20px rgba(15,23,42,0.06)}
 
-    .cv-container {
-      width: 80%;
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 40px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-    }
+    /* Left column */
+    .sidebar .name{font-size:22px;font-weight:800;letter-spacing:0.6px}
+    .sidebar .title{color:var(--muted);margin-bottom:14px}
+    .avatar{width:78px;height:78px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700;margin-right:12px}
+    .contact-list{margin-top:12px}
+    .contact-item{display:flex;align-items:center;margin:8px 0;color:var(--muted);font-size:14px}
+    .contact-item svg{width:16px;height:16px;margin-right:10px;opacity:0.9}
+    .section-title{font-weight:700;margin-top:18px;margin-bottom:10px;color:#111827}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--soft);font-size:13px;margin:6px 6px 0 0}
+    .lang-list{display:flex;flex-wrap:wrap}
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #0077b6;
-      padding-bottom: 15px;
-      gap: 20px;
-    }
+    /* Skill bars */
+    .skill{margin-bottom:10px}
+    .skill p{margin:0 0 6px 0;font-size:14px}
+    .bar{height:10px;background:#e6eefc;border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed)}
 
-    header .photo img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #0077b6;
-    }
+    /* Main column */
+    .summary{font-size:15px;line-height:1.5;color:#374151}
+    h3{margin:8px 0 6px}
+    .job{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(250,250,255,1), rgba(247,249,255,1));margin-bottom:12px}
+    .job .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .list{margin:8px 0 0 0;padding-left:18px}
+    .edu{margin-bottom:12px}
 
-    header .header-text {
-      flex: 1;
-      text-align: left;
-    }
+    /* Footer small */
+    .print-btn{margin-top:12px;display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid rgba(11,92,255,0.12);background:transparent;color:var(--accent);cursor:pointer}
 
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      color: #023e8a;
-    }
-
-    header h2 {
-      font-size: 1em;
-      color: #555;
-      margin-top: 5px;
-    }
-
-    .infos {
-      margin-top: 20px;
-      background: #e3f2fd;
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    .contact p {
-      margin: 5px 0;
-    }
-
-    .contact a {
-      color: #0077b6;
-      text-decoration: none;
-    }
-
-    .section {
-      margin-top: 30px;
-    }
-
-    .section h3 {
-      border-left: 5px solid #0077b6;
-      padding-left: 10px;
-      color: #023e8a;
-      margin-bottom: 10px;
-    }
-
-    .section ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .section li {
-      margin-bottom: 10px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skills span {
-      background: #0077b6;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.9em;
-    }
-
-    .langues,
-    .interets {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .langues li,
-    .interets li {
-      background: #90e0ef;
-      color: #023e8a;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-weight: 500;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      header .header-text {
-        text-align: center;
-      }
+    /* Responsive */
+    @media (max-width:880px){
+      .cv-wrap{grid-template-columns:1fr;max-width:700px;padding:8px}
+      .avatar{margin:0 0 12px 0}
     }
   </style>
 </head>
 <body>
-  <div class="cv-container">
-    <header>
-      <div class="header-text">
-        <h1>Oumayma Zekri</h1>
-        <h2>Étudiante diplômée en développement des systèmes d'information</h2>
+  <div class="cv-wrap">
+    <aside class="card sidebar">
+      <div style="display:flex;align-items:center">
+        <div class="avatar">OZ</div>
+        <div>
+          <div class="name">Oumayma ZEKRI</div>
+          <div class="title">Étudiante en DevOps</div>
+        </div>
       </div>
-      <div class="photo">
-        <img src="oum.png" alt="Photo de Oumayma Zekri" />
+
+      <div class="section-title">Résumé</div>
+      <div class="summary">Étudiante en Master Professionnel DevOps, passionnée par l’automatisation, le développement agile et l’intégration continue. Forte d’une solide formation en développement des systèmes informatiques et de plusieurs stages réussis. Recherche un stage stimulant dans un environnement agile.</div>
+
+      <div class="section-title">Contact</div>
+      <div class="contact-list">
+        <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 19H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2z" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg> oum18157@gmail.com</div>
+        <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 5h18M3 12h18M3 19h18" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg> Hammam-Lif, Tunisie</div>
+        <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92V21a1 1 0 0 1-1 1 19 19 0 0 1-8.63-2.67A19 19 0 0 1 3 6.63 19 19 0 0 1 5.67 3 1 1 0 0 1 6.7 3h3.1a1 1 0 0 1 1 .75c.1.57.3 1.13.58 1.65a1 1 0 0 1-.24 1.06L9.5 8.5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg> 22800587</div>
+        <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 0 1-8 0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg> @Oumaymazekri (GitHub / LinkedIn)</div>
       </div>
-    </header>
 
-    <section class="infos">
-      <div class="contact">
-        <p><strong>📧</strong> oum18157@gmail.com</p>
-        <p><strong>📞</strong> 22 800 587</p>
-        <p><strong>🏠</strong> 05 rue Khmais Tarnen, Hammam-Lif</p>
-        <p><strong>🎂</strong> Née le 09/09/2001</p>
-        <p>
-          <strong>🌐</strong>
-          <a href="https://www.linkedin.com/in/OUMAYMA%20ZEKRI" target="_blank">LinkedIn</a>
-        </p>
+      <div class="section-title">Langues</div>
+      <div class="lang-list">
+        <span class="pill">Arabe</span>
+        <span class="pill">Français</span>
+        <span class="pill">Anglais</span>
+        <span class="pill">Espagnol</span>
       </div>
-    </section>
 
-    <section class="section">
-      <h3>🎓 Diplômes et Formations</h3>
-      <ul>
-        <li><strong>Licence Appliquée en Informatique</strong><br />ISET Tozeur (2022–2024)</li>
-        <li><strong>Baccalauréat Sciences Expérimentales</strong><br />Lycée Hammam-Lif (2021–2022)</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h3>💼 Expériences Professionnelles</h3>
-      <ul>
-        <li>
-          <strong>Stagiaire PFE</strong> — SRA Integration, Tunis (Jan–Mai 2024)<br />
-          Développement d’une application mobile e-commerce.
-        </li>
-        <li>
-          <strong>Stagiaire</strong> — CAVEO Automotive, Tunis (Jan–Fév 2023)<br />
-          Développement d’une plateforme de gestion clients.
-        </li>
-        <li>
-          <strong>Stagiaire</strong> — DUSTCODING, Tozeur (Jan–Fév 2022)<br />
-          Développement d’un site web de vente de voitures.
-        </li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h3>🧠 Compétences</h3>
-      <div class="skills">
-        <span>HTML</span>
-        <span>Flutter</span>
-        <span>Node.js</span>
-        <span>Symfony</span>
-        <span>Angular</span>
-        <span>Figma</span>
+      <div class="section-title">Compétences</div>
+      <div class="skill">
+        <p>Développement web</p>
+        <div class="bar"><i style="width:85%"></i></div>
       </div>
-    </section>
+      <div class="skill">
+        <p>DevOps & Outils</p>
+        <div class="bar"><i style="width:78%"></i></div>
+      </div>
+      <div class="skill">
+        <p>Conteneurisation (Docker)</p>
+        <div class="bar"><i style="width:72%"></i></div>
+      </div>
 
-    <section class="section">
-      <h3>🌍 Langues</h3>
-      <ul class="langues">
-        <li>Arabe</li>
-        <li>Français</li>
-        <li>Anglais</li>
-      </ul>
-    </section>
+      <div class="section-title">Centres d'intérêt</div>
+      <div>
+        <span class="pill">Cloud & DevOps</span>
+        <span class="pill">Développement mobile</span>
+        <span class="pill">Nouvelles technologies</span>
+      </div>
 
-    <section class="section">
-      <h3>❤️ Centres d’intérêt</h3>
-      <ul class="interets">
-        <li>Sport</li>
-        <li>Musique</li>
-        <li>Lecture</li>
-        <li>Réseaux sociaux</li>
-      </ul>
-    </section>
+      <button class="print-btn" onclick="window.print()">Imprimer / Télécharger (PDF)</button>
+    </aside>
+
+    <main class="card main">
+      <section>
+        <h3>Formation</h3>
+        <div class="edu">
+          <strong>Diplôme National de Licence Appliquée en Informatique – Développement des Systèmes Informatiques</strong>
+          <div class="meta">Septembre 2021 — Juin 2024 • Institut Supérieur des Études Technologiques de Tozeur (ISET Tozeur)</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Expériences professionnelles</h3>
+
+        <div class="job">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div>
+              <strong>Stagiaire – Projet de Fin d’Études (PFE) — SRA Integration Tunis</strong>
+              <div class="meta">Janvier 2024 — Mai 2024</div>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Conception et développement d’une application mobile de vente de pneus de voiture.</li>
+            <li>Gestion des produits, panier, recherche, et intégration d'une base de données.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <strong>Stagiaire Développeuse Full Stack — Caveo Tunis</strong>
+          <div class="meta">Janvier 2023 — Février 2023</div>
+          <ul class="list">
+            <li>Développement d’une plateforme de gestion des employés.</li>
+            <li>Implémentation des modules CRUD et connexion à la base de données.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <strong>Stagiaire Développeuse Web — DustCoding Tozeur</strong>
+          <div class="meta">Janvier 2022 — Février 2022</div>
+          <ul class="list">
+            <li>Réalisation d’un site e-commerce de vente de voitures.</li>
+            <li>Participation à la conception des interfaces utilisateur.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>Stack & Outils</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">React.js</span>
+          <span class="pill">Spring Boot</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">Flutter</span>
+          <span class="pill">MySQL / MongoDB</span>
+          <span class="pill">Git / GitHub</span>
+          <span class="pill">Docker</span>
+          <span class="pill">GitHub Actions</span>
+        </div>
+      </section>
+
+      <section style="margin-top:18px">
+        <h3>Liens</h3>
+        <div class="contact-item">GitHub: https://github.com/Oumaymazekri</div>
+        <div class="contact-item">LinkedIn: https://www.linkedin.com/in/oumayma-zekri</div>
+        <div class="contact-item">Email: oum18157@gmail.com</div>
+      </section>
+    </main>
   </div>
+
+  <script>
+    // Petit script pour améliorer l'impression (cache bouton)
+    window.onbeforeprint = function(){
+      document.querySelectorAll('.print-btn').forEach(b=>b.style.display='none');
+    }
+    window.onafterprint = function(){
+      document.querySelectorAll('.print-btn').forEach(b=>b.style.display='inline-block');
+    }
+  </script>
 </body>
 </html>
